@@ -70,6 +70,8 @@ namespace DatingApp.API.Controllers
 
             var selectedRoles = roleEditDto.RoleNames;
 
+            //selectedRoles = selectedRoles != null ? selectedRoles : new string[] {};
+            //or
             selectedRoles = selectedRoles ?? new string[] { };
             var result = await _userManager.AddToRolesAsync(user, selectedRoles.Except(userRoles));
 

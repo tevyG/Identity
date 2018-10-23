@@ -40,8 +40,8 @@ namespace DatingApp.API.Data
                 foreach (var user in users)
                 {
                     user.Photos.SingleOrDefault().IsApproved = true;
-                    _userManager.CreateAsync(user, "password").Wait();
-                    _userManager.AddToRoleAsync(user, "Member").Wait();
+                    _userManager.CreateAsync(user, "Da.2018$33").Wait(); //_userManager.CreateAsync(user, "password").Wait();
+					_userManager.AddToRoleAsync(user, "Member").Wait();
                 }
 
                 var adminUser = new User
@@ -49,13 +49,24 @@ namespace DatingApp.API.Data
                     UserName = "Admin"
                 };
 
-                IdentityResult result = _userManager.CreateAsync(adminUser, "password").Result;
+                IdentityResult result = _userManager.CreateAsync(adminUser, "Dtv$33.99").Result;
+				//IdentityResult result = _userManager.CreateAsync(adminUser, "password").Result;
 
-                if (result.Succeeded)
+				var moderatorUser = new User
+				{
+					UserName = "Moderator"
+				};
+
+				result = _userManager.CreateAsync(moderatorUser, "Dtv$33.99").Result;
+
+				if (result.Succeeded)
                 {
                     var admin = _userManager.FindByNameAsync("Admin").Result;
                     _userManager.AddToRolesAsync(admin, new[] {"Admin", "Moderator"}).Wait();
-                }
+
+					var moderator = _userManager.FindByNameAsync("Moderator").Result;
+					_userManager.AddToRolesAsync(moderator, new[] { "Moderator" }).Wait();
+				}
             }
         }
     }

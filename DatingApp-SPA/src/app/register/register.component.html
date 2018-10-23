@@ -53,21 +53,49 @@
       class="form-control" 
       formControlName="password" 
       placeholder="Password">
-      <div class="invalid-feedback" 
+    <div class="invalid-feedback" 
         *ngIf="registerForm.get('password').hasError('required') 
           && registerForm.get('password').touched">
           Password is required
-      </div>
-      <div class="invalid-feedback" 
-      *ngIf="registerForm.get('password').hasError('minlength') 
-        && registerForm.get('password').touched">
-        Password must be at least 4 characters
     </div>
     <div class="invalid-feedback" 
-    *ngIf="registerForm.get('password').hasError('maxlength') 
-      && registerForm.get('password').touched">
-      Password cannot exceed 8 characters
-  </div>
+        *ngIf="registerForm.get('password').hasError('minlength') 
+        && registerForm.get('password').touched">
+        Password must be at least 6 characters
+    </div>
+    <div class="invalid-feedback" 
+        *ngIf="registerForm.get('password').hasError('maxlength') 
+        && registerForm.get('password').touched">
+        Password cannot exceed 12 characters
+    </div>
+    
+    <div class="invalid-feedback" 
+      *ngIf="registerForm.get('password').hasError('hasNumber') 
+              && registerForm.get('password').touched">
+      Password must contain at least 1 number!
+    </div>      
+
+    <div class="invalid-feedback" 
+      *ngIf="registerForm.get('password').hasError('hasCapitalCase') 
+             && registerForm.get('password').touched">
+      Password must contain at least 1 Capital Case!
+    </div>
+
+    <div class="invalid-feedback" 
+      *ngIf="registerForm.get('password').hasError('hasSmallCase') 
+              && registerForm.get('password').touched">
+      Password must contain at least 1 Small Case!
+    </div>
+
+    <div class="invalid-feedback" 
+      *ngIf="registerForm.get('password').hasError('hasSpecialCharacters') 
+            && registerForm.get('password').touched">
+      Password must contain at least 1 Special Character!
+    </div>
+    
+
+
+
   </div>
 
   <div class="form-group">
